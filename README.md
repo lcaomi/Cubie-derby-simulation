@@ -24,7 +24,7 @@
 ## 项目结构
 
 ```
-Cube-derby-sim_Gp.C-A/
+Cubie-derby-simulation/
 ├── CubieDerby_Gp.B-A/       # B组模拟
 │   ├── simulate.py           #   Numba JIT + 多进程
 │   ├── For_Claude.txt        #   B组详细需求
