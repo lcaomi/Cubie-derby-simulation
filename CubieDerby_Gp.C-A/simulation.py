@@ -389,6 +389,7 @@ def simulate_one_game(seed):
     forno_bot = np.zeros(7, dtype=np.int32)
     yuno_used = np.zeros(7, dtype=np.int32)
     yuno_mid = np.zeros(7, dtype=np.int32)
+    base_dice = np.zeros(7, dtype=np.int32)
 
     # RNG state as 1-element array (passed by reference to inlined helpers)
     rng = np.zeros(1, dtype=np.uint64)
@@ -410,6 +411,13 @@ def simulate_one_game(seed):
 
     while not game_over:
         round_num += 1
+
+        # ===== PRE-GENERATE BASE DICE =====
+        for d in range(6):
+            if finished[d] == 0:
+                base_dice[d] = _rng_randint(rng, 1, 4)  # 1-3
+        if round_num >= 4:
+            base_dice[6] = _rng_randint(rng, 1, 7)  # 1-6
 
         # ===== PRE-ROUND SKILLS =====
         for d in range(6):
@@ -511,11 +519,11 @@ def simulate_one_game(seed):
 
             # Dice roll + extra steps
             if d == 6:
-                dice = _rng_randint(rng, 1, 7)  # 1-6
+                dice = base_dice[6]
                 total_steps = dice
                 forward_moving = False
             else:
-                dice = _rng_randint(rng, 1, 4)  # 1-3
+                dice = base_dice[d]
                 extra = 0
                 if forno_bot[d]:
                     extra += 3
@@ -550,7 +558,7 @@ def simulate_one_game(seed):
 
                 # Win check (top-to-bottom in moved)
                 finish_counter, game_over = _check_wins(
-                    moved, pos, fwd, finished, rank, finish_counter, 6)
+                    moved, pos, fwd, finished, rank, finish_counter, 1)
 
             if game_over:
                 break
@@ -561,7 +569,7 @@ def simulate_one_game(seed):
                     _effect_green_red(tile_bot, above, below, pos, fwd,
                                       moved, forward=True)
                     finish_counter, game_over = _check_wins(
-                        moved, pos, fwd, finished, rank, finish_counter, 6)
+                        moved, pos, fwd, finished, rank, finish_counter, 1)
                 else:
                     _effect_green_red(tile_bot, above, below, pos, fwd,
                                       np.array([6], dtype=np.int32), forward=True)
@@ -587,6 +595,26 @@ def simulate_one_game(seed):
         # ===== 哈基ブ TELEPORT CHECK =====
         if not game_over and max_fwd > pos[6]:
             _dango_teleport(tile_bot, above, below, pos, 6, 31)
+
+    # Compute remaining ranks by position (closer to 31 = better) then stack height
+    remaining = np.zeros(6, dtype=np.int32)
+    n_rem = 0
+    for d in range(6):
+        if finished[d] == 0:
+            remaining[n_rem] = d
+            n_rem += 1
+
+    for i in range(n_rem):
+        for j in range(i + 1, n_rem):
+            di = remaining[i]
+            dj = remaining[j]
+            hi = _stack_idx(tile_bot, above, pos[di], di)
+            hj = _stack_idx(tile_bot, above, pos[dj], dj)
+            if fwd[di] < fwd[dj] or (fwd[di] == fwd[dj] and hi < hj):
+                remaining[i], remaining[j] = remaining[j], remaining[i]
+
+    for i in range(n_rem):
+        rank[remaining[i]] = finish_counter + 1 + i
 
     # Return finish ranks for 6 regular dango
     result = np.zeros(6, dtype=np.int32)
@@ -678,6 +706,7 @@ class VerboseGame:
         self.fornono_bottom = [False] * 7
         self.yuno_used = [False] * 7
         self.yuno_past_midpoint = [False] * 7
+        self.base_dice = [0] * 7
 
         # Initial stacking
         order = list(range(6))
@@ -739,7 +768,7 @@ class VerboseGame:
                 self.finished[d] = True
                 self.finish_counter += 1
                 self.finish_rank[d] = self.finish_counter
-                if self.finish_counter >= 6:
+                if self.finish_counter >= 1:
                     self.game_over = True
 
     def _trigger_yuno(self):
@@ -816,6 +845,12 @@ class VerboseGame:
         print(f"\n{'='*50}")
         print(f"Round {self.round_num}")
         print(f"{'='*50}")
+        # Pre-generate base dice
+        for d in range(6):
+            if not self.finished[d]:
+                self.base_dice[d] = self.rng.randint(1, 3)
+        if self.round_num >= 4:
+            self.base_dice[6] = self.rng.randint(1, 6)
         self._apply_pre_round_skills()
         order = self._get_move_order()
         names = [DANGO_NAMES[i] if i < 6 else '哈基布' for i in order]
@@ -827,7 +862,7 @@ class VerboseGame:
                 continue
             name = DANGO_NAMES[d] if d < 6 else '哈基布'
             pos, sidx = self._find(d)
-            dice = self.rng.randint(1, 6) if d == 6 else self.rng.randint(1, 3)
+            dice = self.base_dice[d]
             print(f"\n  {name} at pos={pos} stack_idx={sidx} rolls {dice}")
 
             if d == 6:
@@ -901,6 +936,14 @@ class VerboseGame:
     def run(self):
         while not self.game_over:
             self.execute_round()
+        # Compute remaining ranks by position (closer to 31 = better) then stack height
+        remaining = [d for d in range(6) if not self.finished[d]]
+        remaining.sort(key=lambda d: (
+            self.forward_steps[d],
+            self._find(d)[1]
+        ), reverse=True)
+        for i, d in enumerate(remaining):
+            self.finish_rank[d] = self.finish_counter + 1 + i
         return self.finish_rank[:6]
 
 
