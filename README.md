@@ -9,9 +9,6 @@
     src="https://github.com/user-attachments/assets/944c8a50-f463-4040-b1d2-625560db22bc"
 </p>
 
-<img width="1280" height="1280" alt="0f83c661059d08570ab9cfa032a91b59_720" src="https://github.com/user-attachments/assets/944c8a50-f463-4040-b1d2-625560db22bc" />
-
-
 基于 Numba JIT + 多进程并行对"团子快跑"桌游进行千万级蒙特卡洛模拟，计算各团子的获胜概率、期望名次及 99% 置信区间（Wilson score interval）。
 
 项目包含 **B组** 和 **C组** 两套独立的模拟实现，分别对应不同团子阵容和技能规则。
