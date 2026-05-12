@@ -1,8 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(python simulate.py --trials 1000 --seed 42 --output results_test.csv)",
-      "Bash(python simulate.py --trials 100000 --seed 42 --output results_100k.csv)"
-    ]
-  }
-}
