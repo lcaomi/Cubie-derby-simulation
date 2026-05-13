@@ -1,6 +1,14 @@
 # 2026 2nd Solaris——Cubie Derby — Monte Carlo Simulation
 
-<img width="240" height="240" alt="image" src="https://github.com/user-attachments/assets/7dfada9c-304b-4c6d-b07c-f990f8b989ff" />
+中文文档请点击:[README.md](https://github.com/lcaomi/Cubie-derby-simulation/README.md)
+
+<p align="center">
+  <img
+    width="240"
+    height="240"
+    alt="image"
+    src="[https://github.com/user-attachments/assets/944c8a50-f463-4040-b1d2-625560db22bc](https://github.com/user-attachments/assets/7dfada9c-304b-4c6d-b07c-f990f8b989ff)"
+</p>
 
 
 ## ⚠️ Disclaimer ⚠️
