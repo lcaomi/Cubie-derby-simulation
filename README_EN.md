@@ -96,12 +96,12 @@ Cubie-derby-simulation/
 
 | Cubie | Skill |
 |------|------|
-| Qianxiao | If smallest dice → +2 steps |
-| Morning | Dice cycle 3→2→1 |
-| Linna | 60% double / 20% no move / 20% normal |
-| Aimis | After tile 15 → teleport (once) |
-| Guardian | Only rolls 2 or 3 |
-| Coletta | 28% double chance |
+| Chisa | If smallest dice → +2 steps |
+| Mornye | Dice cycle 3→2→1 |
+| Lynae | 60% double / 20% no move / 20% normal |
+| Aemeth | After tile 15 → teleport (once) |
+| Shore Keeper | Only rolls 2 or 3 |
+| Coretta | 28% double chance |
 
 ---
 
@@ -111,9 +111,9 @@ Cubie-derby-simulation/
 |------|------|
 | Augusta | Skip turn if top; next round last |
 | Yuno | Teleport others after midpoint |
-| Fnono | Bottom → +3 |
+| Phrolova | Bottom → +3 |
 | Changli | 65% last if someone below |
-| Jinxi | 40% move to top |
+| Jinhsi | 40% move to top |
 | Calcharo | Last place → +3 |
 
 ---
