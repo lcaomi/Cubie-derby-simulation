@@ -1,5 +1,5 @@
-# 2026年第二索拉-团子快跑 — 蒙特卡洛模拟
-
+# 2026年-第二索拉团子快跑 — 蒙特卡洛模拟
+For English version: [README_EN.md](https://github.com/lcaomi/Cubie-derby-simulation/blob/main/README_EN.md)
 
 <p align="center">
   <img
