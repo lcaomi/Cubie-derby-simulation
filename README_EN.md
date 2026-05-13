@@ -1,5 +1,16 @@
 # 2026 2nd Solaris——Cubie Derby — Monte Carlo Simulation
 
+中文文档请点击:[README.md](https://github.com/lcaomi/Cubie-derby-simulation/README.md)
+
+<p align="center">
+  <img
+    width="240"
+    height="240"
+    alt="image"
+    src="https://github.com/user-attachments/assets/7dfada9c-304b-4c6d-b07c-f990f8b989ff"
+</p>
+
+
 ## ⚠️ Disclaimer ⚠️
 **This project is based on the event "Cubie Derby" map from KURO GAMES version 3.3. All text, skill descriptions, and map explanations belong to KURO GAMES. The author assumes no responsibility for any results. This project is for entertainment and practice purposes only and should not be used as any valid reference or recommendation.**
 
@@ -85,12 +96,12 @@ Cubie-derby-simulation/
 
 | Cubie | Skill |
 |------|------|
-| Qianxiao | If smallest dice → +2 steps |
-| Morning | Dice cycle 3→2→1 |
-| Linna | 60% double / 20% no move / 20% normal |
-| Aimis | After tile 15 → teleport (once) |
-| Guardian | Only rolls 2 or 3 |
-| Coletta | 28% double chance |
+| Chisa | If smallest dice → +2 steps |
+| Mornye | Dice cycle 3→2→1 |
+| Lynae | 60% double / 20% no move / 20% normal |
+| Aemeth | After tile 15 → teleport (once) |
+| Shore Keeper | Only rolls 2 or 3 |
+| Coretta | 28% double chance |
 
 ---
 
@@ -100,9 +111,9 @@ Cubie-derby-simulation/
 |------|------|
 | Augusta | Skip turn if top; next round last |
 | Yuno | Teleport others after midpoint |
-| Fnono | Bottom → +3 |
+| Phrolova | Bottom → +3 |
 | Changli | 65% last if someone below |
-| Jinxi | 40% move to top |
+| Jinhsi | 40% move to top |
 | Calcharo | Last place → +3 |
 
 ---
