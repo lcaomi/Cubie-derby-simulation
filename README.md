@@ -1,5 +1,5 @@
 # 团子快跑 — 2026年蒙特卡洛模拟
-
+For English version: [README_EN.md](https://github.com/lcaomi/Cubie-derby-simulation/blob/main/README_EN.md)
 
 <p align="center">
   <img
