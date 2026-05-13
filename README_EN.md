@@ -1,5 +1,8 @@
 # 2026 2nd Solaris——Cubie Derby — Monte Carlo Simulation
 
+<img width="240" height="240" alt="image" src="https://github.com/user-attachments/assets/7dfada9c-304b-4c6d-b07c-f990f8b989ff" />
+
+
 ## ⚠️ Disclaimer ⚠️
 **This project is based on the event "Cubie Derby" map from KURO GAMES version 3.3. All text, skill descriptions, and map explanations belong to KURO GAMES. The author assumes no responsibility for any results. This project is for entertainment and practice purposes only and should not be used as any valid reference or recommendation.**
 
