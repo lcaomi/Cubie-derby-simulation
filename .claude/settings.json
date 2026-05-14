@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python simulate_dango.py --n 1000000 --seed 20260514)"
+    ]
+  }
+}
